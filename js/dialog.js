@@ -19,6 +19,7 @@
 
   var closePopup = function () {
     userDialog.classList.add('hidden');
+    userDialog.removeAttribute('style');
     document.removeEventListener('keydown', onPopupEscPress);
     setupForm.removeEventListener('submit', closePopup);
   };
