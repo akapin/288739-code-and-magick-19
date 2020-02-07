@@ -7,27 +7,28 @@
   var fireballElement = userDialog.querySelector('.setup-fireball-wrap');
 
   var onUserWizardElementClick = function (evt) {
-    if (evt.target.classList.contains('wizard-coat')) {
-      var coatColor = window.color.getRandomColor('coat');
-      while (evt.target.style.fill === coatColor) {
-        coatColor = window.color.getRandomColor('coat');
+    var target = evt.target;
+    if (target.classList.contains('wizard-coat')) {
+      var coatColor = window.color.get('coat');
+      while (target.style.fill === coatColor) {
+        coatColor = window.color.get('coat');
       }
-      evt.target.style.fill = coatColor;
+      target.style.fill = coatColor;
       setupWizardAppearanceElement.querySelector('input[name="coat-color"]').value = coatColor;
     }
 
-    if (evt.target.classList.contains('wizard-eyes')) {
-      var eyesColor = window.color.getRandomColor('eyes');
-      while (evt.target.style.fill === eyesColor) {
-        eyesColor = window.color.getRandomColor('eyes');
+    if (target.classList.contains('wizard-eyes')) {
+      var eyesColor = window.color.get('eyes');
+      while (target.style.fill === eyesColor) {
+        eyesColor = window.color.get('eyes');
       }
-      evt.target.style.fill = eyesColor;
+      target.style.fill = eyesColor;
       setupWizardAppearanceElement.querySelector('input[name="eyes-color"]').value = eyesColor;
     }
   };
 
   var onFireballClick = function () {
-    var fireballColor = window.color.getRandomColor('fireball');
+    var fireballColor = window.color.get('fireball');
     fireballElement.style.background = fireballColor;
     fireballElement.querySelector('input[name="fireball-color"]').value = fireballColor;
   };

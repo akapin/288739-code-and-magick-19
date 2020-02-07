@@ -11,11 +11,11 @@
     'fireball': FIREBALL_COLORS,
   };
 
-  var getRandomColor = function (object) {
-    return colorMap[object][Math.floor(EYE_COLORS.length * Math.random())];
+  var getRandomColor = function (wizardPart) {
+    return colorMap[wizardPart][Math.floor(EYE_COLORS.length * Math.random())];
   };
 
   window.color = {
-    getRandomColor: getRandomColor,
+    get: getRandomColor,
   };
 })();

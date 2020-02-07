@@ -12,8 +12,8 @@
       wizards.push(
           {
             name: window.util.getRandomItem(NAMES) + ' ' + window.util.getRandomItem(SURNAMES),
-            coatColor: window.color.getRandomColor('coat'),
-            eyesColor: window.color.getRandomColor('eyes'),
+            coatColor: window.color.get('coat'),
+            eyesColor: window.color.get('eyes'),
           }
       );
     }

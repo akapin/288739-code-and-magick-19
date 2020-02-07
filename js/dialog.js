@@ -24,17 +24,26 @@
     setupForm.removeEventListener('submit', closePopup);
   };
 
-  setupOpen.addEventListener('click', openPopup);
+  var onSetupOpenClick = function () {
+    openPopup();
+  };
 
-  setupOpen.addEventListener('keydown', function (evt) {
+  var onSetupOpenKeydown = function (evt) {
     window.util.isEnterEvent(evt, openPopup);
-  });
+  };
 
-  setupClose.addEventListener('click', closePopup);
+  var onSetupCloseClick = function () {
+    closePopup();
+  };
 
-  setupClose.addEventListener('keydown', function (evt) {
+  var onSetupCloseKeydown = function (evt) {
     window.util.isEnterEvent(evt, closePopup);
-  });
+  };
+
+  setupOpen.addEventListener('click', onSetupOpenClick);
+  setupOpen.addEventListener('keydown', onSetupOpenKeydown);
+  setupClose.addEventListener('click', onSetupCloseClick);
+  setupClose.addEventListener('keydown', onSetupCloseKeydown);
 
   userNameInput.addEventListener('keydown', function (evt) {
     evt.stopPropagation();
