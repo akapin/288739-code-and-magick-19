@@ -48,4 +48,11 @@
   userNameInput.addEventListener('keydown', function (evt) {
     evt.stopPropagation();
   });
+
+  setupForm.addEventListener('submit', function (evt) {
+    window.backend.upload(new FormData(setupForm), function () {
+      userDialog.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
 })();
