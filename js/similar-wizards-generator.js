@@ -1,10 +1,7 @@
 'use strict';
 
 (function () {
-  var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-  var SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
   var SIMILAR_WIZARDS_AMOUNT = 4;
-
   var userDialog = document.querySelector('.setup');
 
   var renderWizard = function (wizard) {
@@ -14,8 +11,8 @@
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
 
     return wizardElement;
   };
@@ -32,7 +29,6 @@
   var successHandler = function (wizards) {
     renderWizards(wizards);
     userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
   };
 
   var errorHandler = function (errorMessage) {

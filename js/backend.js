@@ -1,8 +1,8 @@
 'use strict';
 
 (function () {
-  var URL = 'https://js.dump.academy/code-and-magick';
-  var URL2 = 'https://js.dump.academy/code-and-magick/data';
+  var URL_SAVE = 'https://js.dump.academy/code-and-magick';
+  var URL_LOAD = 'https://js.dump.academy/code-and-magick/data';
   var TIMEOUT_IN_MS = 10000;
   var StatusCode = {
     OK: 200
@@ -28,7 +28,7 @@
 
     xhr.timeout = TIMEOUT_IN_MS;
 
-    xhr.open('GET', URL);
+    xhr.open('GET', URL_LOAD);
     xhr.send();
   };
 
@@ -37,10 +37,22 @@
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
-      onLoad(xhr.response);
+      if (xhr.status === StatusCode.OK) {
+        onLoad(xhr.response);
+      } else {
+        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+      }
+    });
+    xhr.addEventListener('error', function () {
+      onError('Произошла ошибка соединения');
+    });
+    xhr.addEventListener('timeout', function () {
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
 
-    xhr.open('POST', URL);
+    xhr.timeout = TIMEOUT_IN_MS;
+
+    xhr.open('POST', URL_SAVE);
     xhr.send(data);
   };
 
