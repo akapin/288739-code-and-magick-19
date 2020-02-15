@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var URL = 'https://js.dump.academy/code-and-magick';
   var userDialog = document.querySelector('.setup');
   var setupForm = document.querySelector('.setup-wizard-form');
   var setupOpen = document.querySelector('.setup-open');
@@ -59,7 +60,7 @@
   var onSetupFormSubmit = function (evt) {
     var data = new FormData(setupForm);
     evt.preventDefault();
-    window.backend.save(data, successHandler, errorHandler);
+    window.backend.save(URL, data, successHandler, errorHandler);
   };
 
   setupOpen.addEventListener('click', onSetupOpenClick);
