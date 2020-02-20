@@ -1,6 +1,11 @@
-// Файл setup.js
 'use strict';
+
 (function () {
+  var wizard = {
+    onEyesChange: function () {},
+    onCoatChange: function () {},
+  };
+
   var userDialog = document.querySelector('.setup');
   var setupWizardAppearanceElement = userDialog.querySelector('.setup-wizard-appearance');
   var userWizardElement = setupWizardAppearanceElement.querySelector('.setup-wizard');
@@ -15,6 +20,7 @@
       }
       target.style.fill = coatColor;
       setupWizardAppearanceElement.querySelector('input[name="coat-color"]').value = coatColor;
+      wizard.onCoatChange(coatColor);
     }
 
     if (target.classList.contains('wizard-eyes')) {
@@ -24,6 +30,7 @@
       }
       target.style.fill = eyesColor;
       setupWizardAppearanceElement.querySelector('input[name="eyes-color"]').value = eyesColor;
+      wizard.onEyesChange(eyesColor);
     }
   };
 
@@ -35,4 +42,6 @@
 
   userWizardElement.addEventListener('click', onUserWizardElementClick);
   fireballElement.addEventListener('click', onFireballClick);
+
+  window.wizard = wizard;
 })();
